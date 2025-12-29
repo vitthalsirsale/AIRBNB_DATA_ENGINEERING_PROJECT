@@ -1,0 +1,7 @@
+# Configure this model to be materialized as a view
+# in development and a table in production/CI contexts
+
+models:
+  - name: bronze
+    config:
+      materialized: "{{ 'view' if target.name == 'dev' else 'table' }}"
